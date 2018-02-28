@@ -1,0 +1,1 @@
+INSERT INTO images (productid, mainimage, secondimage, thirdimage, fourthimage, fifthimage, sixthimage) VALUES (16, 'AV6683_160_A_PREM.jpeg', 'AV6683_160_B_PREM.jpeg', 'AV6683_160_C_PREM.jpeg', 'AV6683_160_D_PREM.jpeg', 'AV6683_160_E_PREM.jpeg', 'AV6683_160_F_PREM.jpeg')

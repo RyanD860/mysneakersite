@@ -1,0 +1,1 @@
+SELECT * FROM stock WHERE productid = $1;

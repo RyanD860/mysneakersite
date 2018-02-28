@@ -1,0 +1,1 @@
+SELECT p.productid, p.category, p.price, p.color, i.mainimage FROM product as p JOIN images as i ON p.productid = i.productid

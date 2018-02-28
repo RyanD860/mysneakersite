@@ -1,0 +1,1 @@
+SELECT p.name, p.price, p.description, i.mainimage , i.secondimage, i.thirdimage, i.fourthimage, i.fifthimage, i.sixthimage FROM product as p JOIN images as i ON p.productid = i.productid WHERE p.productid = $1 

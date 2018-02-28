@@ -1,0 +1,1 @@
+UPDATE users SET address = $1, city = $2, state = $3, zipcode = $4, email = $5, phone = $6 WHERE authid = $7;

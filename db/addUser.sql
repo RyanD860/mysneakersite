@@ -1,0 +1,1 @@
+INSERT INTO users (authid, lastname, firstname) VALUES ($1, $2, $3) RETURNING *;
