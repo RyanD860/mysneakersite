@@ -10,6 +10,7 @@ const LOGOUT = "LOGOUT";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const CHECKOUT = "CHECKOUT";
+const GET_PURCHASES = "GET_PURCHASES";
 
 //ACTION CREATORS
 
@@ -106,6 +107,18 @@ export function checkout(cart, userid) {
   };
 }
 
+export function getPurchases(id) {
+  return {
+    type: "GET_PURCHASES",
+    payload: axios
+      .post(`/api/pastPurchases/${id}`)
+      .then(response => {
+        return console.log(response.data);
+      })
+      .catch(console.log)
+  };
+}
+
 // INITIAL STATE
 
 const initialState = {
@@ -117,7 +130,8 @@ const initialState = {
   diderr: false,
   filterSilo: [],
   loggedIn: false,
-  cart: []
+  cart: [],
+  pastPurchases: []
 };
 
 //REDUCER
@@ -216,6 +230,18 @@ function reducer(state = initialState, action) {
 
     case `${CHECKOUT}_FULFILLED`:
       return Object.assign({}, state, { cart: action.payload });
+
+    case `${GET_PURCHASES}_REJECTED`:
+      return Object.assign({}, state, { isLoading: false, didErr: true });
+
+    case `${GET_PURCHASES}_PENDING`:
+      return Object.assign({}, state, { isLoading: true });
+
+    case `${GET_PURCHASES}_FULFILLED`:
+      return Object.assign({}, state, {
+        isLoading: false,
+        pastPurchases: [...state.pastPurchases, action.payload]
+      });
 
     default:
       return state;

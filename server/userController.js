@@ -28,5 +28,18 @@ module.exports = {
         res.status(200).json(response);
       })
       .catch(console.log);
+  },
+
+  getPurchases: function(req, res, next) {
+    const db = req.app.get("db");
+
+    console.log(req.params.id);
+
+    ab
+      .getPurchases([req.params.id])
+      .then(response => {
+        res.status(200).send(response);
+      })
+      .catch(console.log);
   }
 };

@@ -1,5 +1,3 @@
-let ordernum = 1;
-
 module.exports = {
   add: function(req, res, next) {
     const db = req.app.get("db");
@@ -22,16 +20,15 @@ module.exports = {
 
   checkout: function(req, res, next) {
     const db = req.app.get("db");
-
+    console.log(req.body);
     for (let i = 0; i < req.body.cart.length; i++) {
       db.checkout([
         req.body.cart[i][0].sku,
         req.body.userid,
-        req.body.cart[i][0].productid,
-        ordernum
+        req.body.cart[i][0].productid
       ]);
     }
-    ordernum = ordernum + 1;
+
     req.session.user.cart = [];
     req.session.user.total = 0;
     res.send(req.session.user);

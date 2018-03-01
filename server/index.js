@@ -9,7 +9,7 @@ const port = 3001;
 const checkForSession = require("./checkForSession");
 const passport = require("passport");
 const strategy = require(`${__dirname}/strategy`);
-
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 //Bringing in controllers
 const prodController = require(`${__dirname}/productsController`);
 const userController = require(`${__dirname}/userController`);
@@ -19,6 +19,7 @@ const cartController = require(`${__dirname}/cartController`);
 const app = express();
 app.use(json());
 app.use(cors());
+app.set("view engine", "pug");
 
 //Connecting to Database
 massive(process.env.CONNECTION_STRING)
@@ -64,6 +65,7 @@ app.get("/api/sneakers", prodController.getSneakers);
 app.get("/api/sneaker/:id", prodController.getSneaker);
 app.get("/api/stock/:id", prodController.getStock);
 app.get("/api/user/:id", userController.getUser);
+app.get("/api/pastPurchases/:id", userController.getPurchases);
 
 // POST
 app.post("/api/addUser/:id", userController.addUser);
@@ -124,11 +126,26 @@ app.get("/me", function(req, res, next) {
 });
 
 app.get("/api/logout", (req, res, next) => {
-  console.log(req.session.user);
-  req.session.destroy(() => {
-    res.redirect("http://localhost:3000/#/login");
-  });
-  next();
+  req.session.destroy();
+  res.status(200).json("Logged out");
+});
+
+app.post("/charge", (req, res, next) => {
+  stripe.customers
+    .create({
+      email: req.body.stripeEmail,
+      source: req.body.source,
+      customer: req.body.customer
+    })
+    .then(customer =>
+      stripe.charges.create({
+        amount: req.body.amount,
+        description: "Sneakers",
+        currency: "usd",
+        customer: customer.id
+      })
+    )
+    .then(res.status(200));
 });
 
 app.listen(port, () => {

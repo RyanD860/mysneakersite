@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { removeFromCart, checkout } from "./../../ducks/reducer";
 import { Link } from "react-router-dom";
+import Checkout from "./checkout";
 
 class Cart extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        {this.props.cart.cart
+        {console.log(this.props)}
+        {this.props.cart.total
           ? this.props.cart.cart.map((item, i) => {
               return (
                 <div key={i}>
@@ -32,20 +34,28 @@ class Cart extends Component {
               );
             })
           : "No items in cart"}
-        {this.props.cart.cart ? (
+        {this.props.cart.total && this.props.loggedIn ? (
           <div>
             <h1>Cart total : {this.props.cart.total}</h1>
-            <Link to="/">
-              <button
-                onClick={() =>
-                  this.props.checkout(
-                    this.props.cart.cart,
-                    this.props.user[0].userid
-                  )
-                }
-              >
-                Checkout
-              </button>
+            <Link to="/" />
+            <Link
+              to={`/user/profile/${this.props.user[0].authid}`}
+              onClick={() =>
+                this.props.checkout(
+                  this.props.cart.cart,
+                  this.props.user[0].userid
+                )
+              }
+            >
+              {" "}
+              <Checkout
+                name={`${this.props.user[0].firstname} ${
+                  this.props.user[0].lastname
+                }`}
+                description={"Sneakers"}
+                amount={this.props.cart.total}
+                customer={this.props.user[0].authid}
+              />
             </Link>
           </div>
         ) : (
