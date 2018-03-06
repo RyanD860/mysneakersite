@@ -25,7 +25,8 @@ module.exports = {
       db.checkout([
         req.body.cart[i][0].sku,
         req.body.userid,
-        req.body.cart[i][0].productid
+        req.body.cart[i][0].productid,
+        req.body.authid
       ]);
     }
 

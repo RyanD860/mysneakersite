@@ -7,6 +7,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <link
+          href="https://fonts.googleapis.com/css?family=Exo"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Righteous"
+          rel="stylesheet"
+        />
         <Header />
         <MuiThemeProvider>{routes}</MuiThemeProvider>
       </div>

@@ -33,12 +33,32 @@ module.exports = {
   getPurchases: function(req, res, next) {
     const db = req.app.get("db");
 
-    console.log(req.params.id);
-
-    ab
+    db
       .getPurchases([req.params.id])
       .then(response => {
         res.status(200).send(response);
+      })
+      .catch(console.log);
+  },
+
+  editUser: function(req, res, next) {
+    const db = req.app.get("db");
+    console.log;
+
+    db
+      .editUser([
+        req.params.id,
+        req.body.firstname,
+        req.body.lastname,
+        req.body.address,
+        req.body.city,
+        req.body.state,
+        req.body.zipcode,
+        req.body.email,
+        req.body.phone
+      ])
+      .then(response => {
+        console.log(response);
       })
       .catch(console.log);
   }

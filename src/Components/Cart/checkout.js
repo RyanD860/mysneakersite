@@ -6,24 +6,48 @@ const CURRENCY = "USD";
 
 const fromDollarsToCent = amount => amount * 100;
 
-const onToken = (amount, description, customer) => token =>
-  axios.post("/charge", {
-    description,
-    source: token.id,
-    currency: CURRENCY,
-    amount: fromDollarsToCent(amount),
-    customer: customer
-  });
+const onToken = (
+  amount,
+  description,
+  customer,
+  addtoCart,
+  cart,
+  user,
+  auth
+) => token =>
+  axios
+    .post("/charge", {
+      description,
+      source: token.id,
+      currency: CURRENCY,
+      amount: fromDollarsToCent(amount),
+      customer: customer
+    })
+    .then(addtoCart(cart, user, auth))
+    .then(console.log(cart, user, auth));
 
-const Checkout = ({ name, description, amount, customer }) => (
+const Checkout = ({
+  name,
+  description,
+  amount,
+  customer,
+  addtoCart,
+  cart,
+  user,
+  auth
+}) => (
   <StripeCheckout
     name={name}
     description={description}
     amount={fromDollarsToCent(amount)}
-    token={onToken(amount, description, customer)}
+    token={onToken(amount, description, customer, addtoCart, cart, user, auth)}
     currency={CURRENCY}
     stripeKey={"pk_test_SsXYSIBwiqR4e2KFXmaEU69G"}
     customer={customer}
+    addtoCart={addtoCart}
+    cart={cart}
+    user={user}
+    auth={auth}
   />
 );
 

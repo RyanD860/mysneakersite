@@ -1,4 +1,93 @@
-img {
-  height: 300px;
-  width: 300px;
+@media only screen and (max-width: 667px) {
+  .homeImg {
+    height: 200px;
+    width: 200px;
+  }
+
+  #filter {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin-top: 20px;
+    width: 75%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    border-radius: 8px;
+  }
+  #home {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 668px) {
+  .homeImg {
+    height: 300px;
+    width: 300px;
+  }
+
+  #homeGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  #filter {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin-top: 20px;
+    width: 75%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    border-radius: 8px;
+  }
+
+  #home {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .homeImg {
+    height: 300px;
+    width: 300px;
+  }
+
+  #homeGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+  #filter {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+
+    border-radius: 8px;
+  }
+
+  #home {
+    padding-top: 200px;
+  }
 }

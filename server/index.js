@@ -10,6 +10,7 @@ const checkForSession = require("./checkForSession");
 const passport = require("passport");
 const strategy = require(`${__dirname}/strategy`);
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
+
 //Bringing in controllers
 const prodController = require(`${__dirname}/productsController`);
 const userController = require(`${__dirname}/userController`);
@@ -65,7 +66,26 @@ app.get("/api/sneakers", prodController.getSneakers);
 app.get("/api/sneaker/:id", prodController.getSneaker);
 app.get("/api/stock/:id", prodController.getStock);
 app.get("/api/user/:id", userController.getUser);
-app.get("/api/pastPurchases/:id", userController.getPurchases);
+app.get("/api/past/:id", userController.getPurchases);
+app.get("/api/getCart", (req, res, next) => {
+  if (req.session.user.cart) {
+    res.json(req.session.user);
+  } else {
+    res.status(200);
+  }
+});
+app.get("/api/checkForUser", (req, res, next) => {
+  if (req.session.user.user) {
+    app
+      .get("db")
+      .getUser([req.session.user.user])
+      .then(response => {
+        res.json(response);
+      });
+  } else {
+    res.status(200);
+  }
+});
 
 // POST
 app.post("/api/addUser/:id", userController.addUser);
@@ -73,6 +93,7 @@ app.post("/api/cart/add", cartController.add);
 app.post("/api/cart/checkout", cartController.checkout);
 
 // PUT
+app.put("/api/editUser/:id", userController.editUser);
 
 // REMOVE
 app.delete("/api/cart/remove/:i/:item", cartController.remove);
@@ -108,10 +129,11 @@ app.get("/me", function(req, res, next) {
                 cart: [],
                 total: 0
               };
+              res.send(req.session.user);
+              next();
               res.redirect(
                 `http://localhost:3000/#/user/addUser/${req.user.id}`
               );
-              next();
             });
         } else {
           req.session.user = {
@@ -119,6 +141,7 @@ app.get("/me", function(req, res, next) {
             cart: [],
             total: 0
           };
+
           res.redirect(`http://localhost:3000/#/user/profile/${req.user.id}`);
         }
       });
@@ -127,7 +150,8 @@ app.get("/me", function(req, res, next) {
 
 app.get("/api/logout", (req, res, next) => {
   req.session.destroy();
-  res.status(200).json("Logged out");
+  next();
+  res.status(200);
 });
 
 app.post("/charge", (req, res, next) => {

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #f5f5f5;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -23,6 +27,18 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+p {
+  font-family: "Exo", sans-serif;
+}
+
+h1 {
+  font-family: "Righteous", cursive;
 }

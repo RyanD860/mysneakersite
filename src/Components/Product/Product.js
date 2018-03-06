@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getSneaker, getStock, addToCart } from "./../../ducks/reducer";
 import DropDownMenu from "material-ui/DropDownMenu";
 import MenuItem from "material-ui/MenuItem";
+import "./Product.css";
 
 class Product extends Component {
   constructor() {
@@ -24,91 +25,117 @@ class Product extends Component {
   }
   handleChange = (event, index, value) => this.setState({ value });
   render() {
-    const styles = { customWidth: { width: 200 } };
+    const styles = { customWidth: { autoWidth: true } };
 
     return (
-      <div>
-        {this.state.selectedImage ? (
-          <img
-            src={process.env.PUBLIC_URL + this.state.selectedImage}
-            alt="Selected "
-          />
-        ) : (
-          false
-        )}
+      <div className="product">
+        <div className="pictures">
+          {this.state.selectedImage ? (
+            <img
+              src={process.env.PUBLIC_URL + this.state.selectedImage}
+              alt="Selected"
+              className="selected"
+            />
+          ) : (
+            <img
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.mainimage
+              }
+              alt="Selected"
+              className="selected"
+            />
+          )}
 
-        <img
-          src={process.env.PUBLIC_URL + this.props.selectedSneaker.mainimage}
-          alt="Main "
-          onClick={() =>
-            this.changeSelectedImg(this.props.selectedSneaker.mainimage)
-          }
-        />
-        <img
-          src={process.env.PUBLIC_URL + this.props.selectedSneaker.secondimage}
-          alt="Second "
-          onClick={() =>
-            this.changeSelectedImg(this.props.selectedSneaker.secondimage)
-          }
-        />
-        <img
-          src={process.env.PUBLIC_URL + this.props.selectedSneaker.thirdimage}
-          alt="Third "
-          onClick={() =>
-            this.changeSelectedImg(this.props.selectedSneaker.thirdimage)
-          }
-        />
-        <img
-          src={process.env.PUBLIC_URL + this.props.selectedSneaker.fourthimage}
-          alt="Fourth "
-          onClick={() =>
-            this.changeSelectedImg(this.props.selectedSneaker.fourthimage)
-          }
-        />
-        <img
-          src={process.env.PUBLIC_URL + this.props.selectedSneaker.fifthimage}
-          alt="Fifth "
-          onClick={() =>
-            this.changeSelectedImg(this.props.selectedSneaker.fifthimage)
-          }
-        />
-        <img
-          src={process.env.PUBLIC_URL + this.props.selectedSneaker.sixthimage}
-          alt="Sixth "
-          onClick={() =>
-            this.changeSelectedImg(this.props.selectedSneaker.sixthimage)
-          }
-        />
-        <div>
-          <p>{this.props.selectedSneaker.name}</p>
-          <p>{this.props.selectedSneaker.description}</p>
+          <img
+            className="smallpic"
+            src={process.env.PUBLIC_URL + this.props.selectedSneaker.mainimage}
+            alt="Main "
+            onClick={() =>
+              this.changeSelectedImg(this.props.selectedSneaker.mainimage)
+            }
+          />
+          <img
+            className="smallpic"
+            src={
+              process.env.PUBLIC_URL + this.props.selectedSneaker.secondimage
+            }
+            alt="Second "
+            onClick={() =>
+              this.changeSelectedImg(this.props.selectedSneaker.secondimage)
+            }
+          />
+          <img
+            className="smallpic"
+            src={process.env.PUBLIC_URL + this.props.selectedSneaker.thirdimage}
+            alt="Third "
+            onClick={() =>
+              this.changeSelectedImg(this.props.selectedSneaker.thirdimage)
+            }
+          />
+          <img
+            className="smallpic"
+            src={
+              process.env.PUBLIC_URL + this.props.selectedSneaker.fourthimage
+            }
+            alt="Fourth "
+            onClick={() =>
+              this.changeSelectedImg(this.props.selectedSneaker.fourthimage)
+            }
+          />
+          <img
+            className="smallpic"
+            src={process.env.PUBLIC_URL + this.props.selectedSneaker.fifthimage}
+            alt="Fifth "
+            onClick={() =>
+              this.changeSelectedImg(this.props.selectedSneaker.fifthimage)
+            }
+          />
+          <img
+            className="smallpic"
+            src={process.env.PUBLIC_URL + this.props.selectedSneaker.sixthimage}
+            alt="Sixth "
+            onClick={() =>
+              this.changeSelectedImg(this.props.selectedSneaker.sixthimage)
+            }
+          />
         </div>
-        {this.props.stock[0] ? (
+
+        <div className="info">
           <div>
-            <DropDownMenu
-              value={this.state.value}
-              onChange={this.handleChange}
-              style={styles.customWidth}
-              autoWidth={false}
-            >
-              {this.props.stock.map((item, i) => {
-                return (
-                  <MenuItem
-                    key={i}
-                    value={item.sku}
-                    primaryText={item.size}
-                    disabled={item.stock === 0}
-                  />
-                );
-              })}
-            </DropDownMenu>
+            <h1 className="title">{this.props.selectedSneaker.name}</h1>
+            <p id="description">{this.props.selectedSneaker.description}</p>
           </div>
-        ) : (
-          false
-        )}
-        <button onClick={() => this.props.addToCart(this.state.value)}>
-          ADD TO CART
-        </button>
+          {this.props.stock[0] ? (
+            <div>
+              <DropDownMenu
+                value={this.state.value}
+                onChange={this.handleChange}
+                style={styles.customWidth}
+                autoWidth={false}
+                className="menu"
+              >
+                {this.props.stock.map((item, i) => {
+                  return (
+                    <MenuItem
+                      key={i}
+                      value={item.sku}
+                      primaryText={item.size}
+                      disabled={item.stock === 0}
+                    />
+                  );
+                })}
+              </DropDownMenu>
+            </div>
+          ) : (
+            false
+          )}
+          <button
+            className="cartBtn"
+            onClick={() => this.props.addToCart(this.state.value)}
+          >
+            ADD TO CART
+          </button>
+        </div>
       </div>
     );
   }

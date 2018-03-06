@@ -1,1 +1,1 @@
-INSERT INTO ordnum (sku, userid, productid) VALUES ($1, $2, $3);
+INSERT INTO ordnum (sku, userid, productid, authid) VALUES ($1, $2, $3, $4);

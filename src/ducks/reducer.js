@@ -7,13 +7,16 @@ const GET_SNEAKER = "GET_SNEAKER";
 const GET_STOCK = "GET_STOCK";
 const GET_USER = "GET_USER";
 const LOGOUT = "LOGOUT";
+const GET_CART = "GET_CART";
 const ADD_TO_CART = "ADD_TO_CART";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const CHECKOUT = "CHECKOUT";
 const GET_PURCHASES = "GET_PURCHASES";
+const CHECK_FOR_USER = "CHECK_FOR_USER";
 
 //ACTION CREATORS
 
+// Gets all sneakers
 export function getSneakers() {
   return {
     type: "GET_SNEAKERS",
@@ -26,6 +29,7 @@ export function getSneakers() {
   };
 }
 
+// Gets one sneaker
 export function getSneaker(id) {
   return {
     type: "GET_SNEAKER",
@@ -35,6 +39,7 @@ export function getSneaker(id) {
   };
 }
 
+// Gets selected sneakers stock
 export function getStock(id) {
   return {
     type: "GET_STOCK",
@@ -47,6 +52,7 @@ export function getStock(id) {
   };
 }
 
+// Gets user information once signed in
 export function getUser(id) {
   return {
     type: "GET_USER",
@@ -59,6 +65,7 @@ export function getUser(id) {
   };
 }
 
+// Logs out user
 export function logOut() {
   return {
     type: "LOGOUT",
@@ -71,6 +78,21 @@ export function logOut() {
   };
 }
 
+// GETS CURRENT CART
+
+export function getCart() {
+  return {
+    type: "GET_CART",
+    payload: axios
+      .get("/api/getCart")
+      .then(response => {
+        return response.data;
+      })
+      .catch(console.log)
+  };
+}
+
+// Adds sneaker to cart
 export function addToCart(sku) {
   return {
     type: "ADD_TO_CART",
@@ -83,6 +105,7 @@ export function addToCart(sku) {
   };
 }
 
+// Removes sneaker from cart
 export function removeFromCart(i, item) {
   return {
     type: "REMOVE_FROM_CART",
@@ -95,11 +118,16 @@ export function removeFromCart(i, item) {
   };
 }
 
-export function checkout(cart, userid) {
+// Checkout items in users cart
+export function checkout(cart, userid, authid) {
   return {
     type: "CHECKOUT",
     payload: axios
-      .post("/api/cart/checkout", { cart: cart, userid: userid })
+      .post("/api/cart/checkout", {
+        cart: cart,
+        userid: userid,
+        authid: authid
+      })
       .then(response => {
         return response.data;
       })
@@ -107,18 +135,32 @@ export function checkout(cart, userid) {
   };
 }
 
+// Finds all of the users past purchases
 export function getPurchases(id) {
   return {
     type: "GET_PURCHASES",
     payload: axios
-      .post(`/api/pastPurchases/${id}`)
+      .get(`/api/past/${id}`)
       .then(response => {
-        return console.log(response.data);
+        return response.data;
       })
       .catch(console.log)
   };
 }
 
+// Checks for user on session
+
+export function checkForUser() {
+  return {
+    type: "CHECK_FOR_USER",
+    payload: axios
+      .get(`/api/checkForUser`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(console.log)
+  };
+}
 // INITIAL STATE
 
 const initialState = {
@@ -200,7 +242,7 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, { isLoading: true });
 
     case `${LOGOUT}_FULFILLED`:
-      return Object.assign({}, state, { user: {}, loggedIn: false });
+      return Object.assign({}, state, { user: {}, loggedIn: false, cart: [] });
 
     // ADD TO CART
 
@@ -213,6 +255,7 @@ function reducer(state = initialState, action) {
     case `${ADD_TO_CART}_FULFILLED`:
       return Object.assign({}, state, { cart: action.payload });
 
+    // Remove from cart
     case `${REMOVE_FROM_CART}_REJECTED`:
       return Object.assign({}, state, { isLoading: false, didErr: true });
 
@@ -222,6 +265,7 @@ function reducer(state = initialState, action) {
     case `${REMOVE_FROM_CART}_FULFILLED`:
       return Object.assign({}, state, { cart: action.payload });
 
+    // Checkout
     case `${CHECKOUT}_REJECTED`:
       return Object.assign({}, state, { isLoading: false, didErr: true });
 
@@ -231,6 +275,7 @@ function reducer(state = initialState, action) {
     case `${CHECKOUT}_FULFILLED`:
       return Object.assign({}, state, { cart: action.payload });
 
+    // Get purchases
     case `${GET_PURCHASES}_REJECTED`:
       return Object.assign({}, state, { isLoading: false, didErr: true });
 
@@ -240,8 +285,30 @@ function reducer(state = initialState, action) {
     case `${GET_PURCHASES}_FULFILLED`:
       return Object.assign({}, state, {
         isLoading: false,
-        pastPurchases: [...state.pastPurchases, action.payload]
+        pastPurchases: action.payload
       });
+
+    case `${CHECK_FOR_USER}_REJECTED`:
+      return Object.assign({}, state, { isLoading: false, didErr: true });
+
+    case `${CHECK_FOR_USER}_PENDING`:
+      return Object.assign({}, state, { isLoading: true });
+
+    case `${CHECK_FOR_USER}_FULFILLED`:
+      return Object.assign({}, state, {
+        isLoading: false,
+        user: action.payload,
+        loggedIn: true
+      });
+
+    case `${GET_CART}_REJECTED`:
+      return Object.assign({}, state, { isLoading: false, didErr: true });
+
+    case `${GET_CART}_PENDING`:
+      return Object.assign({}, state, { isLoading: true });
+
+    case `${GET_CART}_FULFILLED`:
+      return Object.assign({}, state, { cart: action.payload });
 
     default:
       return state;
