@@ -122,7 +122,7 @@ class Home extends Component {
     }
 
     return (
-      <div id="home">
+      <div className="home">
         <button label="Toggle Drawer" onClick={this.handleDrawer} id="filter">
           Filter
         </button>

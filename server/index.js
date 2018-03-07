@@ -10,6 +10,10 @@ const checkForSession = require("./checkForSession");
 const passport = require("passport");
 const strategy = require(`${__dirname}/strategy`);
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const client = require("twilio")(
+  process.env.TWILIO_SID,
+  process.env.TWILIO_TOKEN
+);
 
 //Bringing in controllers
 const prodController = require(`${__dirname}/productsController`);
@@ -154,6 +158,7 @@ app.get("/api/logout", (req, res, next) => {
   res.status(200);
 });
 
+// STRIPE
 app.post("/charge", (req, res, next) => {
   stripe.customers
     .create({
@@ -170,6 +175,26 @@ app.post("/charge", (req, res, next) => {
       })
     )
     .then(res.status(200));
+});
+
+// TWILIO
+app.get("/text/:name/:phone", function(req, res) {
+  client.messages.create(
+    {
+      to: `+${req.params.phone}`,
+      from: process.env.TWILIO_PHONE,
+      body: `Hello ${
+        req.params.name
+      }. Your order has been received and you will receive a text with shipping information in a few days. Thank you.`
+    },
+    function(err, data) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(data);
+      }
+    }
+  );
 });
 
 app.listen(port, () => {

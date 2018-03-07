@@ -23,7 +23,8 @@
     "redux": "^3.7.2",
     "redux-promise-middleware": "^5.0.0",
     "session": "^0.1.0",
-    "stripe": "^5.5.0"
+    "stripe": "^5.5.0",
+    "twilio": "^3.13.0"
   },
   "scripts": {
     "start": "react-scripts start",

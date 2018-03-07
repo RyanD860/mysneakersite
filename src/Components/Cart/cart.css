@@ -55,3 +55,63 @@
     font-size: 25px;
   }
 }
+
+@media only screen and (min-width: 1025px) {
+  .cartImg {
+    height: 225px;
+    width: 225px;
+  }
+  .cartItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid black;
+  }
+
+  .cartinfo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 400px;
+  }
+
+  .subtitle {
+    margin-right: 150px;
+  }
+
+  .shoetitle {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+  }
+
+  .remove {
+    font-size: 26px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin-top: 20px;
+    width: 50%;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .cart {
+    padding-top: 200px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #checkout {
+    margin-right: 500px;
+  }
+
+  .no {
+    margin: auto;
+  }
+
+  .flex {
+    display: flex;
+    flex-direction: column;
+  }
+}
