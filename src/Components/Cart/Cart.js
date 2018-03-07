@@ -15,11 +15,11 @@ class Cart extends Component {
   render() {
     return (
       <div className="cart">
-        {this.props.cart.total ? (
-          this.props.cart.cart.map((item, i) => {
-            return (
-              <div key={i} className="cartItem">
-                <div className="flex">
+        <div className="col">
+          {this.props.cart.total ? (
+            this.props.cart.cart.map((item, i) => {
+              return (
+                <div key={i} className="cartItem">
                   <div className="shoetitle">
                     <img
                       src={process.env.PUBLIC_URL + item[0].mainimage}
@@ -28,23 +28,26 @@ class Cart extends Component {
                     />
                     <h2 className="title">{item[0].name}</h2>
                   </div>
+
+                  <div className="cartinfo">
+                    <h2 className="subtitle">size: {item[0].size}</h2>
+                    <h2 className="subtitle">price: {item[0].price}</h2>
+                    <button
+                      onClick={() =>
+                        this.props.removeFromCart(i, item[0].price)
+                      }
+                      className="remove"
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-                <div className="cartinfo">
-                  <h2 className="subtitle">size: {item[0].size}</h2>
-                  <h2 className="subtitle">price: {item[0].price}</h2>
-                  <button
-                    onClick={() => this.props.removeFromCart(i, item[0].price)}
-                    className="remove"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          <h1 className="no">NO ITEMS IN CART</h1>
-        )}
+              );
+            })
+          ) : (
+            <h1 className="no">NO ITEMS IN CART</h1>
+          )}
+        </div>
         <div id="checkout">
           {this.props.cart.total ? (
             <div>
