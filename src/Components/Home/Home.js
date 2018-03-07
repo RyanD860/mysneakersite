@@ -48,53 +48,43 @@ class Home extends Component {
   render() {
     const styles = { customText: { fontSize: 24 } };
     let filterSilo = [];
-    if (this.props.sneakers[0]) {
+    if (this.props.sneakers[0] && this.state.filterSilo !== "") {
+      console.log("filter silo");
       filterSilo = this.props.sneakers[0].filter(
         item => item.category === this.state.filterSilo
       );
     }
 
     let filterCol = [];
-    if (this.props.sneakers[0]) {
+    if (this.props.sneakers[0] && this.state.filterColor !== "") {
+      console.log("filter color");
       filterCol = this.props.sneakers[0].filter(
         item => item.color === this.state.filterColor
       );
     }
 
     let filterBoth = [];
-    if (this.props.sneakers[0]) {
-      filterBoth = this.props.sneakers[0].filter(item => {
-        return (
-          item.category === this.state.filterSilo &&
-          item.color === this.state.filterColor
-        );
-      });
+    if (
+      this.props.sneakers[0] &&
+      this.state.filterSilo &&
+      this.state.filterColor
+    ) {
+      console.log("filter both");
+      filterBoth = this.props.sneakers[0]
+        .filter(item => {
+          return item.color === this.state.filterColor;
+        })
+        .filter(item => item.category === this.state.filterSilo);
     }
 
     let map = [];
 
-    if (this.state.filterSilo === "" && this.state.filterColor === "") {
-      map = filterBoth.map((item, i) => {
-        return (
-          <h1 key={i}>
-            <Link to={`/sneaker/${item.productid}`}>
-              {console.log("filterboth")}
-              <img
-                src={process.env.PUBLIC_URL + item.mainimage}
-                alt="sneaker"
-                className="fade"
-                className="homeImg"
-              />
-            </Link>
-          </h1>
-        );
-      });
-    } else if (this.state.filterSilo === "" && this.state.filterColor !== "") {
+    if (this.state.filterSilo === "" && this.state.filterColor !== "") {
+      map = [];
       map = filterCol.map((item, i) => {
         return (
           <h1 key={i}>
             <Link to={`/sneaker/${item.productid}`}>
-              {console.log("filtercolor")}
               <img
                 src={process.env.PUBLIC_URL + item.mainimage}
                 alt="sneaker"
@@ -105,11 +95,27 @@ class Home extends Component {
         );
       });
     } else if (this.state.filterSilo !== "" && this.state.filterColor === "") {
+      map = [];
       map = filterSilo.map((item, i) => {
         return (
           <h1 key={i}>
             <Link to={`/sneaker/${item.productid}`}>
-              {console.log("filter silo")}
+              <img
+                src={process.env.PUBLIC_URL + item.mainimage}
+                alt="sneaker"
+                className="homeImg"
+              />
+            </Link>
+          </h1>
+        );
+      });
+    }
+    if (this.state.filterSilo !== "" && this.state.filterColor !== "") {
+      map = [];
+      map = filterBoth.map((item, i) => {
+        return (
+          <h1 key={i}>
+            <Link to={`/sneaker/${item.productid}`}>
               <img
                 src={process.env.PUBLIC_URL + item.mainimage}
                 alt="sneaker"
@@ -241,6 +247,7 @@ class Home extends Component {
                 );
               })
             : map}
+          {console.log(this.state)}
         </div>
       </div>
     );
