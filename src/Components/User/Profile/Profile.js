@@ -119,107 +119,111 @@ class Profile extends Component {
   render() {
     const style = { marginLeft: 20 };
     return (
-      <div>
-        {this.props.user[0] ? (
-          <div id="customer">
-            <h1>{this.props.user[0].firstname}</h1>
-            <h1>{this.props.user[0].lastname}</h1>
-          </div>
-        ) : (
-          <h1>No User</h1>
-        )}
+      <div id="profile">
+        <div id="custinfo">
+          {this.props.user[0] ? (
+            <div id="customer">
+              <h1>{this.props.user[0].firstname}</h1>
+              <h1>{this.props.user[0].lastname}</h1>
+            </div>
+          ) : (
+            <h1>No User</h1>
+          )}
 
-        <button onClick={() => this.allowEdits()} className="editBtn">
-          {" "}
-          EDIT SHIPPING INFORMATION
-        </button>
-        {this.state.editable ? (
-          <div>
-            <Paper zDepth={2} id="edit">
-              <TextField
-                defaultValue={this.props.user[0].firstname}
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handleAddressChange(e.target.value)}
-              />
-              <TextField
-                defaultValue={this.props.user[0].lastname}
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handleAddressChange(e.target.value)}
-              />
-              <TextField
-                defaultValue={this.props.user[0].address}
-                style={style}
-                hintText="Address"
-                underlineShow={false}
-                onChange={e => this.handleAddressChange(e.target.value)}
-              />
-              <Divider />
-              <TextField
-                defaultValue={this.props.user[0].city}
-                hintText="City"
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handleCityChange(e.target.value)}
-              />
-              <Divider />
-              <TextField
-                defaultValue={this.props.user[0].state}
-                hintText="State"
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handleStateChange(e.target.value)}
-              />
-              <Divider />
-              <TextField
-                defaultValue={this.props.user[0].zipcode}
-                hintText="Zipcode"
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handlezipcodeChange(e.target.value)}
-              />
-              <Divider />
-              <TextField
-                defaultValue={this.props.user[0].email}
-                hintText="E-Mail"
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handleEmailChange(e.target.value)}
-              />
-              <Divider />
-              <TextField
-                defaultValue={this.props.user[0].phone}
-                hintText="Phone"
-                style={style}
-                underlineShow={false}
-                onChange={e => this.handlePhoneChange(e.target.value)}
-              />
-              <Divider />
-            </Paper>
+          <button onClick={() => this.allowEdits()} className="editBtn">
+            {" "}
+            EDIT SHIPPING INFORMATION
+          </button>
+          {this.state.editable ? (
+            <div>
+              <Paper zDepth={2} id="edit">
+                <TextField
+                  defaultValue={this.props.user[0].firstname}
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handleAddressChange(e.target.value)}
+                />
+                <TextField
+                  defaultValue={this.props.user[0].lastname}
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handleAddressChange(e.target.value)}
+                />
+                <TextField
+                  defaultValue={this.props.user[0].address}
+                  style={style}
+                  hintText="Address"
+                  underlineShow={false}
+                  onChange={e => this.handleAddressChange(e.target.value)}
+                />
+                <Divider />
+                <TextField
+                  defaultValue={this.props.user[0].city}
+                  hintText="City"
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handleCityChange(e.target.value)}
+                />
+                <Divider />
+                <TextField
+                  defaultValue={this.props.user[0].state}
+                  hintText="State"
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handleStateChange(e.target.value)}
+                />
+                <Divider />
+                <TextField
+                  defaultValue={this.props.user[0].zipcode}
+                  hintText="Zipcode"
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handlezipcodeChange(e.target.value)}
+                />
+                <Divider />
+                <TextField
+                  defaultValue={this.props.user[0].email}
+                  hintText="E-Mail"
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handleEmailChange(e.target.value)}
+                />
+                <Divider />
+                <TextField
+                  defaultValue={this.props.user[0].phone}
+                  hintText="Phone"
+                  style={style}
+                  underlineShow={false}
+                  onChange={e => this.handlePhoneChange(e.target.value)}
+                />
+                <Divider />
+              </Paper>
 
-            <button
-              onClick={() =>
-                this.editUser(
-                  this.state.firstname,
-                  this.state.lastname,
-                  this.state.address,
-                  this.state.city,
-                  this.state.state,
-                  this.state.zipcode,
-                  this.state.email,
-                  this.state.phone
-                )
-              }
-            >
-              ENTER
-            </button>
-          </div>
-        ) : (
-          false
-        )}
-        {this.props.pastPurchases[0]
-          ? this.props.pastPurchases.map((item, i) => {
+              <button
+                onClick={() =>
+                  this.editUser(
+                    this.state.firstname,
+                    this.state.lastname,
+                    this.state.address,
+                    this.state.city,
+                    this.state.state,
+                    this.state.zipcode,
+                    this.state.email,
+                    this.state.phone
+                  )
+                }
+              >
+                ENTER
+              </button>
+            </div>
+          ) : (
+            false
+          )}
+        </div>
+        <div id="purchases">
+          {this.props.pastPurchases[0] ? <h2>Past Purchases :</h2> : false}
+          {this.props.pastPurchases[0] ? (
+            this.props.pastPurchases.map((item, i) => {
               return (
                 <div key={i}>
                   <img
@@ -233,7 +237,10 @@ class Profile extends Component {
                 </div>
               );
             })
-          : "You have made no purchases."}
+          ) : (
+            <h2>You have made no purchases</h2>
+          )}
+        </div>
       </div>
     );
   }

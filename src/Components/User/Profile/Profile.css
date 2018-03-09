@@ -30,3 +30,52 @@
     margin-bottom: 5px;
   }
 }
+@media only screen and (max-width: 1024px) and (min-width: 668px) {
+  .pastPurImg {
+    height: 225px;
+    width: 225px;
+  }
+  #customer {
+    font-size: 15px;
+    line-height: 10px;
+  }
+  #edit {
+    width: 75%;
+    margin: auto;
+  }
+  .editBtn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin-top: 5px;
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
+    margin-bottom: 5px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  #profile {
+    padding-top: 200px;
+    display: flex;
+    flex-direction: row;
+  }
+  #purchases {
+    display: flex;
+    flex-direction: column;
+    margin-left: 375px;
+  }
+  .pastPurImg {
+    height: 225px;
+    width: 225px;
+  }
+  #custinfo {
+    margin-left: 200px;
+  }
+}

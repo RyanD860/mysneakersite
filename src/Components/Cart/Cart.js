@@ -50,7 +50,7 @@ class Cart extends Component {
         </div>
         <div id="checkout">
           {this.props.cart.total ? (
-            <div>
+            <div id="total">
               <h1>Cart total : {this.props.cart.total}</h1>
             </div>
           ) : (

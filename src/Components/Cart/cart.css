@@ -107,6 +107,10 @@
   #checkout {
     margin-right: 5px;
     margin-left: 80px;
+    margin-top: 150px;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .no {
@@ -121,5 +125,11 @@
     display: flex;
     flex-direction: column;
     width: 70%;
+  }
+
+  #total {
+    padding-bottom: 100px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
