@@ -3,6 +3,11 @@
     height: 90px;
     width: 90px;
   }
+  .smallpic {
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
+  }
   .selected {
     height: 300px;
     width: 300px;
@@ -34,6 +39,11 @@
     margin: auto;
     border-radius: 8px;
   }
+  .small {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 668px) {
@@ -42,8 +52,8 @@
     width: 160px;
   }
   .selected {
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     border-bottom: 2px solid black;
     margin-bottom: 5px;
   }
@@ -54,7 +64,7 @@
     display: inline-block;
     margin: auto;
     width: 85%;
-    font-size: 24px;
+    font-size: 18px;
     padding: 15px;
   }
 
@@ -76,30 +86,88 @@
     margin: auto;
     border-radius: 8px;
   }
+  .smallpic {
+    height: 100px;
+    width: 100px;
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  .small {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: 1025px) {
   .selected {
     height: 500px;
     width: 500px;
+    margin-bottom: 50px;
   }
   .smallpic {
     height: 100px;
     width: 100px;
+    margin-right: 20px;
   }
   .allsneaks {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
   }
   .product {
     display: flex;
   }
 
   .info {
-    margin: 300px 60px 150px 0px;
+    margin: 200px 60px 150px 0px;
+    width: 50%;
   }
   .pictures {
-    margin-top: 125px;
+    margin-top: 25px;
+    width: 50%;
   }
+  #description {
+    margin-top: 50px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #f7f8f9;
+    line-height: 25px;
+    padding: 20px 20px 20px 20px;
+  }
+  .inform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+    margin-left: 70px;
+  }
+  .Ptitle {
+    border-bottom: 2px black solid;
+    padding-bottom: 15px;
+  }
+
+  .cartBtn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin-top: 20px;
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    border-radius: 8px;
+  }
+  .small {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+p {
+  font-family: "Raleway", sans-serif;
 }

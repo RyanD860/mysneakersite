@@ -13,9 +13,13 @@ class Cart extends Component {
   componentDidMount() {}
 
   render() {
+    let toNumber = Number(this.props.cart.total).toFixed(2);
+    let tax = Number(toNumber * 0.06).toFixed(2);
+    let cartTotal = Number(this.props.cart.total * 1.06).toFixed(2);
     return (
       <div className="cart">
         <div className="col">
+          <h1>Shopping Cart</h1>
           {this.props.cart.total ? (
             this.props.cart.cart.map((item, i) => {
               return (
@@ -26,35 +30,37 @@ class Cart extends Component {
                       alt="item in cart"
                       className="cartImg"
                     />
-                    <h2 className="title">{item[0].name}</h2>
                   </div>
 
                   <div className="cartinfo">
-                    <h2 className="subtitle">size: {item[0].size}</h2>
-                    <h2 className="subtitle">price: {item[0].price}</h2>
-                    <button
-                      onClick={() =>
-                        this.props.removeFromCart(i, item[0].price)
-                      }
-                      className="remove"
-                    >
-                      Remove
-                    </button>
+                    <p className="title">{item[0].name}</p>
+                    <p className="subtitle">Size: {item[0].size}</p>
+                    <p className="subtitle">SubTotal: {item[0].price}</p>
                   </div>
+                  <button
+                    onClick={() => this.props.removeFromCart(i, item[0].price)}
+                    className="remove"
+                  >
+                    Remove
+                  </button>
                 </div>
               );
             })
           ) : (
-            <h1 className="no">NO ITEMS IN CART</h1>
+            <h2 className="no">NO ITEMS IN CART</h2>
           )}
         </div>
         <div id="checkout">
+          <h2>Cart</h2>
           {this.props.cart.total ? (
             <div id="total">
-              <h1>Cart total : {this.props.cart.total}</h1>
+              <p>Cart subtotal: ${toNumber}</p>
+              <p>Shipping: FREE </p>
+              <p>Tax: ${tax}</p>
+              <p>Cart total: {cartTotal}</p>
             </div>
           ) : (
-            <h1>Cart total : 0</h1>
+            <h2>Cart total : 0</h2>
           )}
           {this.props.loggedIn && this.props.cart.total ? (
             <div>
@@ -63,7 +69,7 @@ class Cart extends Component {
                   this.props.user[0].lastname
                 }`}
                 description={"Sneakers"}
-                amount={this.props.cart.total}
+                amount={cartTotal}
                 customer={this.props.user[0].authid}
                 addtoCart={this.props.checkout}
                 cart={this.props.cart.cart}
@@ -77,6 +83,7 @@ class Cart extends Component {
             false
           )}
         </div>
+        {console.log({ cartTotal })}
       </div>
     );
   }

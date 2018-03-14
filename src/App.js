@@ -3,7 +3,15 @@ import "./App.css";
 import routes from "./routes";
 import Header from "./Components/Header/Header";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      landing: false
+    };
+  }
   render() {
     return (
       <div className="App">
@@ -13,6 +21,10 @@ class App extends Component {
         />
         <link
           href="https://fonts.googleapis.com/css?family=Righteous"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Raleway"
           rel="stylesheet"
         />
         <Header />

@@ -37,7 +37,10 @@ class Header extends Component {
           />
           <nav>
             <Link to="/" style={{ textDecoration: "none" }}>
-              <nav>HOME</nav>
+              <nav>Home</nav>
+            </Link>
+            <Link to="/home" style={{ textDecoration: "none" }}>
+              <nav>Sneakers</nav>
             </Link>
             <Link to="/cart" style={{ textDecoration: "none" }}>
               <nav>
@@ -74,7 +77,6 @@ class Header extends Component {
             )}
           </nav>
         </header>
-        {console.log(this.props)}
       </div>
     );
   }

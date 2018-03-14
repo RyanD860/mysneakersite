@@ -45,64 +45,73 @@ class Product extends Component {
               className="selected"
             />
           )}
-
-          <img
-            className="smallpic"
-            src={process.env.PUBLIC_URL + this.props.selectedSneaker.mainimage}
-            alt="Main "
-            onClick={() =>
-              this.changeSelectedImg(this.props.selectedSneaker.mainimage)
-            }
-          />
-          <img
-            className="smallpic"
-            src={
-              process.env.PUBLIC_URL + this.props.selectedSneaker.secondimage
-            }
-            alt="Second "
-            onClick={() =>
-              this.changeSelectedImg(this.props.selectedSneaker.secondimage)
-            }
-          />
-          <img
-            className="smallpic"
-            src={process.env.PUBLIC_URL + this.props.selectedSneaker.thirdimage}
-            alt="Third "
-            onClick={() =>
-              this.changeSelectedImg(this.props.selectedSneaker.thirdimage)
-            }
-          />
-          <img
-            className="smallpic"
-            src={
-              process.env.PUBLIC_URL + this.props.selectedSneaker.fourthimage
-            }
-            alt="Fourth "
-            onClick={() =>
-              this.changeSelectedImg(this.props.selectedSneaker.fourthimage)
-            }
-          />
-          <img
-            className="smallpic"
-            src={process.env.PUBLIC_URL + this.props.selectedSneaker.fifthimage}
-            alt="Fifth "
-            onClick={() =>
-              this.changeSelectedImg(this.props.selectedSneaker.fifthimage)
-            }
-          />
-          <img
-            className="smallpic"
-            src={process.env.PUBLIC_URL + this.props.selectedSneaker.sixthimage}
-            alt="Sixth "
-            onClick={() =>
-              this.changeSelectedImg(this.props.selectedSneaker.sixthimage)
-            }
-          />
+          <div className="small">
+            <img
+              className="smallpic"
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.mainimage
+              }
+              alt="Main "
+              onClick={() =>
+                this.changeSelectedImg(this.props.selectedSneaker.mainimage)
+              }
+            />
+            <img
+              className="smallpic"
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.secondimage
+              }
+              alt="Second "
+              onClick={() =>
+                this.changeSelectedImg(this.props.selectedSneaker.secondimage)
+              }
+            />
+            <img
+              className="smallpic"
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.thirdimage
+              }
+              alt="Third "
+              onClick={() =>
+                this.changeSelectedImg(this.props.selectedSneaker.thirdimage)
+              }
+            />
+            <img
+              className="smallpic"
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.fourthimage
+              }
+              alt="Fourth "
+              onClick={() =>
+                this.changeSelectedImg(this.props.selectedSneaker.fourthimage)
+              }
+            />
+            <img
+              className="smallpic"
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.fifthimage
+              }
+              alt="Fifth "
+              onClick={() =>
+                this.changeSelectedImg(this.props.selectedSneaker.fifthimage)
+              }
+            />
+            <img
+              className="smallpic"
+              src={
+                process.env.PUBLIC_URL + this.props.selectedSneaker.sixthimage
+              }
+              alt="Sixth "
+              onClick={() =>
+                this.changeSelectedImg(this.props.selectedSneaker.sixthimage)
+              }
+            />
+          </div>
         </div>
 
         <div className="info">
-          <div>
-            <h1 className="title">{this.props.selectedSneaker.name}</h1>
+          <div className="inform">
+            <h1 className="Ptitle">{this.props.selectedSneaker.name}</h1>
             <p id="description">{this.props.selectedSneaker.description}</p>
           </div>
           {this.props.stock[0] ? (

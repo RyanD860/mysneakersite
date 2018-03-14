@@ -76,6 +76,22 @@
     width: 225px;
   }
   #custinfo {
-    margin-left: 200px;
+    margin-left: 400px;
+  }
+  .editBtn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    background-color: #e7e7e7;
+    border: none;
+    text-decoration: none;
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    white-space: nowrap;
   }
 }

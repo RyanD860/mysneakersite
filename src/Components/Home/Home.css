@@ -8,7 +8,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 20px;
-    background-color: #e7e7e7;
+    background-color: #0074d9;
     border: none;
     text-decoration: none;
     margin-top: 20px;
@@ -37,9 +37,9 @@
     justify-content: space-around;
   }
   #filter {
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 30px;
+    font-size: 24px;
     background-color: #e7e7e7;
     border: none;
     text-decoration: none;
@@ -52,7 +52,7 @@
     border-radius: 8px;
   }
 
-  #home {
+  .home {
     margin-top: 20px;
   }
 }
@@ -61,6 +61,7 @@
   .homeImg {
     height: 300px;
     width: 300px;
+    opacity: 0.85;
   }
 
   #homeGrid {
@@ -70,6 +71,8 @@
     justify-content: space-around;
     margin-right: 40px;
     margin-left: 40px;
+    position: relative;
+    z-index: 1;
   }
   #filter {
     padding-top: 10px;
@@ -88,5 +91,8 @@
 
   .home {
     padding-top: 200px;
+  }
+  img:hover {
+    opacity: 1;
   }
 }

@@ -121,13 +121,14 @@ class Profile extends Component {
     return (
       <div id="profile">
         <div id="custinfo">
+          <h2>User Profile</h2>
           {this.props.user[0] ? (
             <div id="customer">
               <h1>{this.props.user[0].firstname}</h1>
               <h1>{this.props.user[0].lastname}</h1>
             </div>
           ) : (
-            <h1>No User</h1>
+            <h2>No User</h2>
           )}
 
           <button onClick={() => this.allowEdits()} className="editBtn">
@@ -140,13 +141,13 @@ class Profile extends Component {
                 <TextField
                   defaultValue={this.props.user[0].firstname}
                   style={style}
-                  underlineShow={false}
+                  underlineShow={true}
                   onChange={e => this.handleAddressChange(e.target.value)}
                 />
                 <TextField
                   defaultValue={this.props.user[0].lastname}
                   style={style}
-                  underlineShow={false}
+                  underlineShow={true}
                   onChange={e => this.handleAddressChange(e.target.value)}
                 />
                 <TextField
@@ -212,9 +213,28 @@ class Profile extends Component {
                     this.state.phone
                   )
                 }
+                className="editBtn"
               >
                 ENTER
               </button>
+            </div>
+          ) : (
+            false
+          )}
+
+          {this.props.user[0] && !this.state.editable ? (
+            <div id="userInfo">
+              <p>
+                {" "}
+                Name: {this.props.user[0].firstname}{" "}
+                {this.props.user[0].lastname}{" "}
+              </p>
+              <p> Address: {this.props.user[0].address} </p>
+              <p> City: {this.props.user[0].city} </p>
+              <p> State: {this.props.user[0].state} </p>
+              <p> Zipcode: {this.props.user[0].zipcode} </p>
+              <p> E-mail: {this.props.user[0].email} </p>
+              <p> Phone: {this.props.user[0].phone} </p>
             </div>
           ) : (
             false

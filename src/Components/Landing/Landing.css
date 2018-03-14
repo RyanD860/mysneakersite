@@ -1,0 +1,14 @@
+#landing {
+  padding-top: 100px;
+}
+.landingtoppic {
+  height: 70vh;
+  width: 100%;
+}
+
+.landingtopInfo {
+  color: #dddddd;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+}
