@@ -30,19 +30,24 @@ class Header extends Component {
           rel="stylesheet"
         />
         <header>
-          <img
-            src="https://cdn.shopify.com/tools/logo-maker/show/S3k4c1R2UjR2SzlzYkVjMWVWdW5LUT09LS14OGhTL1hoZHdKS21WYllsd3N6bUhBPT0=--239dfaa484a520bbdec68b0d7b57ef71c054dd39_1000x.svg.png"
-            alt="Website Logo"
-            id="logo"
-          />
+          <Link to="/" style={{ textDecoration: "none", borderBottom: "none" }}>
+            <img
+              src="https://cdn.shopify.com/tools/logo-maker/show/S3k4c1R2UjR2SzlzYkVjMWVWdW5LUT09LS14OGhTL1hoZHdKS21WYllsd3N6bUhBPT0=--239dfaa484a520bbdec68b0d7b57ef71c054dd39_1000x.svg.png"
+              alt="Website Logo"
+              id="logo"
+            />
+          </Link>
           <nav>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <nav>Home</nav>
-            </Link>
-            <Link to="/home" style={{ textDecoration: "none" }}>
+            <Link
+              to="/home"
+              style={{ textDecoration: "none", borderBottom: "none" }}
+            >
               <nav>Sneakers</nav>
             </Link>
-            <Link to="/cart" style={{ textDecoration: "none" }}>
+            <Link
+              to="/cart"
+              style={{ textDecoration: "none", borderBottom: "none" }}
+            >
               <nav>
                 {this.props.cart.cart
                   ? `(${this.props.cart.cart.length})`
@@ -53,21 +58,24 @@ class Header extends Component {
             {this.props.user[0] ? (
               <Link
                 to={`/user/profile/${this.props.user[0].authid}`}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", borderBottom: "none" }}
               >
                 <nav>Profile</nav>
               </Link>
             ) : (
               <a
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", borderBottom: "none" }}
                 href={"http://localhost:3001/login"}
               >
                 Log In
               </a>
             )}
 
-            {this.props.loggedIn ? (
-              <Link to="/" style={{ textDecoration: "none" }}>
+            {this.props.user[0] ? (
+              <Link
+                to="/"
+                style={{ textDecoration: "none", borderBottom: "none" }}
+              >
                 <button className="log" onClick={() => this.props.logOut()}>
                   Log Out
                 </button>

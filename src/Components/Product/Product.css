@@ -104,6 +104,7 @@
     height: 500px;
     width: 500px;
     margin-bottom: 50px;
+    padding-top: 100px;
   }
   .smallpic {
     height: 100px;
@@ -128,11 +129,13 @@
   }
   #description {
     margin-top: 50px;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
-    background-color: #f7f8f9;
+    background-color: #e5e5e5;
     line-height: 25px;
     padding: 20px 20px 20px 20px;
+    width: 70%;
+    align-self: center;
   }
   .inform {
     display: flex;
@@ -166,8 +169,4 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-}
-
-p {
-  font-family: "Raleway", sans-serif;
 }

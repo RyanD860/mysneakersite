@@ -118,6 +118,7 @@ class Profile extends Component {
 
   render() {
     const style = { marginLeft: 20 };
+
     return (
       <div id="profile">
         <div id="custinfo">
@@ -137,7 +138,11 @@ class Profile extends Component {
           </button>
           {this.state.editable ? (
             <div>
-              <Paper zDepth={2} id="edit">
+              <Paper
+                zDepth={2}
+                id="edit"
+                style={{ width: "75%", margin: "auto" }}
+              >
                 <TextField
                   defaultValue={this.props.user[0].firstname}
                   style={style}

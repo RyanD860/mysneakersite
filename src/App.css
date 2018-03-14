@@ -35,10 +35,26 @@ body {
   }
 }
 
-p {
-  font-family: "Exo", sans-serif;
-}
-
 h1 {
-  font-family: "Righteous", cursive;
+  font-family: "Fjalla One", sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: 46px;
+  font-size: 43px;
+  margin: 0 0 23px 0;
+}
+h2 {
+  font-family: "Cantarell", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin: 0 0 23px 0;
+}
+p {
+  font-family: "Cantarell", sans-serif;
+  font-size: 17px;
+  line-height: 23px;
+  margin: 0 0 23px 0;
 }

@@ -49,7 +49,6 @@ class Home extends Component {
     const styles = { customText: { fontSize: 24 } };
     let filterSilo = [];
     if (this.props.sneakers[0] && this.state.filterSilo !== "") {
-      console.log("filter silo");
       filterSilo = this.props.sneakers[0].filter(
         item => item.category === this.state.filterSilo
       );
@@ -57,7 +56,6 @@ class Home extends Component {
 
     let filterCol = [];
     if (this.props.sneakers[0] && this.state.filterColor !== "") {
-      console.log("filter color");
       filterCol = this.props.sneakers[0].filter(
         item => item.color === this.state.filterColor
       );
@@ -69,7 +67,6 @@ class Home extends Component {
       this.state.filterSilo &&
       this.state.filterColor
     ) {
-      console.log("filter both");
       filterBoth = this.props.sneakers[0]
         .filter(item => {
           return item.color === this.state.filterColor;
@@ -247,7 +244,6 @@ class Home extends Component {
                 );
               })
             : map}
-          {console.log(this.state)}
         </div>
       </div>
     );

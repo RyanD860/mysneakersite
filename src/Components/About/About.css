@@ -1,0 +1,11 @@
+.landingtopAbout {
+  color: #dddddd;
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  z-index: 4;
+  border: 2px solid #dddddd;
+  padding: 50px;
+  background-color: rgba(0, 0, 0);
+  width: 30%;
+}

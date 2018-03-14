@@ -242,7 +242,11 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, { isLoading: true });
 
     case `${LOGOUT}_FULFILLED`:
-      return Object.assign({}, state, { user: {}, loggedIn: false, cart: [] });
+      return Object.assign({}, state, {
+        user: {},
+        loggedIn: false,
+        cart: []
+      });
 
     // ADD TO CART
 
@@ -295,11 +299,19 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, { isLoading: true });
 
     case `${CHECK_FOR_USER}_FULFILLED`:
-      return Object.assign({}, state, {
-        isLoading: false,
-        user: action.payload,
-        loggedIn: true
-      });
+      if (action.payload.hasOwnProperty("message")) {
+        return Object.assign({}, state, {
+          isLoading: false,
+          user: {},
+          loggedIn: true
+        });
+      } else {
+        return Object.assign({}, state, {
+          isLoading: false,
+          user: action.payload,
+          loggedIn: true
+        });
+      }
 
     case `${GET_CART}_REJECTED`:
       return Object.assign({}, state, { isLoading: false, didErr: true });

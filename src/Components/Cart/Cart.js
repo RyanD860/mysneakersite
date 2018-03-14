@@ -83,7 +83,6 @@ class Cart extends Component {
             false
           )}
         </div>
-        {console.log({ cartTotal })}
       </div>
     );
   }

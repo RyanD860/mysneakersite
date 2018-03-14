@@ -87,7 +87,7 @@ app.get("/api/checkForUser", (req, res, next) => {
         res.json(response);
       });
   } else {
-    res.status(200);
+    res.status(200).send({ message: "No User" });
   }
 });
 
@@ -146,7 +146,7 @@ app.get("/me", function(req, res, next) {
             total: 0
           };
 
-          res.redirect(`http://localhost:3000/#/user/profile/${req.user.id}`);
+          res.redirect(`http://localhost:3000/#/`);
         }
       });
   }
