@@ -16,6 +16,13 @@ class Cart extends Component {
     let toNumber = Number(this.props.cart.total).toFixed(2);
     let tax = Number(toNumber * 0.06).toFixed(2);
     let cartTotal = Number(this.props.cart.total * 1.06).toFixed(2);
+
+    let userAddress = "";
+    if (this.props.user[0]) {
+      userAddress = `${this.props.user[0].address}, ${
+        this.props.user[0].city
+      }, ${this.props.user[0].state}, ${this.props.user[0].zipcode}`;
+    }
     return (
       <div className="cart">
         <div className="col">
@@ -62,7 +69,9 @@ class Cart extends Component {
           ) : (
             <h2>Cart total : 0</h2>
           )}
-          {this.props.loggedIn && this.props.cart.total ? (
+          {this.props.loggedIn &&
+          this.props.cart.total &&
+          userAddress !== "" ? (
             <div>
               <Checkout
                 name={`${this.props.user[0].firstname} ${
@@ -77,12 +86,14 @@ class Cart extends Component {
                 auth={this.props.user[0].authid}
                 id="checkout"
                 phone={this.props.user[0].phone}
+                address={userAddress}
               />
             </div>
           ) : (
             false
           )}
         </div>
+        {console.log(userAddress)}
       </div>
     );
   }

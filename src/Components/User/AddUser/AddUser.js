@@ -4,6 +4,7 @@ import Paper from "material-ui/Paper";
 import TextField from "material-ui/TextField";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Adduser.css";
 
 class AddUser extends Component {
   constructor() {
@@ -68,9 +69,9 @@ class AddUser extends Component {
   render() {
     const style = { marginLeft: 20 };
     return (
-      <div>
+      <div id="add">
         <h1>Please enter your shipping information for quick checkout!</h1>
-        <Paper zDepth={2}>
+        <Paper zDepth={2} id="editinfo">
           <TextField
             hintText="Address"
             style={style}
@@ -126,6 +127,8 @@ class AddUser extends Component {
                 this.state.phone
               )
             }
+            className="editBtn"
+            style={{ width: "50%" }}
           >
             ENTER
           </button>

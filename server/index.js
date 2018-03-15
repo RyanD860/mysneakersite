@@ -26,6 +26,8 @@ app.use(json());
 app.use(cors());
 app.set("view engine", "pug");
 
+app.use(express.static(`${__dirname}/../build`));
+
 //Connecting to Database
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -133,12 +135,13 @@ app.get("/me", function(req, res, next) {
                 cart: [],
                 total: 0
               };
-              res.send(req.session.user);
-              next();
+            })
+            .then(
               res.redirect(
                 `http://localhost:3000/#/user/addUser/${req.user.id}`
-              );
-            });
+              )
+            );
+          next();
         } else {
           req.session.user = {
             user: response[0].authid,
@@ -178,14 +181,16 @@ app.post("/charge", (req, res, next) => {
 });
 
 // TWILIO
-app.get("/text/:name/:phone", function(req, res) {
+app.get("/text/:name/:phone/:address", function(req, res) {
   client.messages.create(
     {
       to: `+${req.params.phone}`,
       from: process.env.TWILIO_PHONE,
       body: `Hello ${
         req.params.name
-      }. Your order has been received and you will receive a text with shipping information in a few days. Thank you.`
+      }. Your order has been received and you will receive a text with shipping information to the following address in a few days. Your address: ${
+        req.params.address
+      }. Thank you.`
     },
     function(err, data) {
       if (err) {

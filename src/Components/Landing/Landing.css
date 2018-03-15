@@ -1,4 +1,79 @@
-@media only screen and (min-width: 1035px) {
+@media only screen and (max-width: 667px) {
+  .landingtoppic {
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .landingtopInfo {
+    color: #dddddd;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    right: 10%;
+    z-index: 4;
+    border: 2px solid #dddddd;
+    padding-top: 15px;
+    height: 35vh;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .landingtopInfo h2 {
+    font-size: 19px !important;
+    line-height: 30px !important;
+  }
+  .landingtopInfo h1 {
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+  .links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .links p {
+    font-size: 19px !important;
+  }
+  a {
+    font-size: 19px !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 668px) {
+  .landingtoppic {
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .landingtopInfo {
+    color: #dddddd;
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    z-index: 4;
+    border: 2px solid #dddddd;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  .links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
   #landing {
     padding-top: 100px;
   }

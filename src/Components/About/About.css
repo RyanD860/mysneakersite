@@ -1,11 +1,49 @@
-.landingtopAbout {
-  color: #dddddd;
-  position: absolute;
-  top: 35%;
-  left: 15%;
-  z-index: 4;
-  border: 2px solid #dddddd;
-  padding: 50px;
-  background-color: rgba(0, 0, 0);
-  width: 30%;
+@media only screen and (max-width: 667px) {
+  .landingtopAbout {
+    color: #dddddd;
+    position: absolute;
+    top: 42%;
+    left: 10%;
+    z-index: 4;
+    border: 2px solid #dddddd;
+    padding-top: 10px;
+    background-color: rgba(0, 0, 0);
+    width: 80%;
+    height: 57vh;
+  }
+  .landingtopAbout h1 {
+    font-size: 24px;
+  }
+  .landingtopAbout p {
+    font-size: 18px !important;
+    line-height: 20px !important;
+  }
+}
+@media only screen and (max-width: 1024px) and (min-width: 668px) {
+  .landingtopAbout {
+    color: #dddddd;
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    z-index: 4;
+    border: 2px solid #dddddd;
+    padding: 30px;
+    background-color: rgba(0, 0, 0);
+    width: 55%;
+    height: 37vh;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .landingtopAbout {
+    color: #dddddd;
+    position: absolute;
+    top: 35%;
+    left: 15%;
+    z-index: 4;
+    border: 2px solid #dddddd;
+    padding: 50px;
+    background-color: rgba(0, 0, 0);
+    width: 30%;
+  }
 }
