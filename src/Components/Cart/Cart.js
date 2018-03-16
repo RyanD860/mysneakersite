@@ -90,7 +90,7 @@ class Cart extends Component {
               />
             </div>
           ) : (
-            false
+            <p>You must be logged in to Checkout</p>
           )}
         </div>
         {console.log(userAddress)}
