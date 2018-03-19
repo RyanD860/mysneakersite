@@ -16,6 +16,7 @@ module.exports = {
       .then(response => {
         res.status(200).json(response);
       })
+      .then(res.redirect(`http://localhost:300/profile/${req.params.id}`))
       .catch(console.log);
   },
 
@@ -43,7 +44,6 @@ module.exports = {
 
   editUser: function(req, res, next) {
     const db = req.app.get("db");
-    console.log;
 
     db
       .editUser([
@@ -58,7 +58,7 @@ module.exports = {
         req.body.phone
       ])
       .then(response => {
-        console.log(response);
+        res.send(response);
       })
       .catch(console.log);
   }

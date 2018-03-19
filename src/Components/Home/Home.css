@@ -2,6 +2,7 @@
   .homeImg {
     height: 200px;
     width: 200px;
+    opacity: 0.85;
   }
 
   #filter {
@@ -12,15 +13,26 @@
     border: none;
     text-decoration: none;
     margin-top: 20px;
-    width: 75%;
+    width: 30%;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
     margin: auto;
     border-radius: 8px;
   }
-  #home {
-    margin-top: 10px;
+
+  #filter:focus {
+    outline: none;
+  }
+  .home {
+    padding-top: 20px;
+  }
+
+  img:hover {
+    opacity: 1;
+  }
+  #filter:hover {
+    cursor: pointer;
   }
 }
 
@@ -28,6 +40,7 @@
   .homeImg {
     height: 300px;
     width: 300px;
+    opacity: 0.85;
   }
 
   #homeGrid {
@@ -44,7 +57,7 @@
     border: none;
     text-decoration: none;
     margin-top: 20px;
-    width: 75%;
+    width: 30%;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
@@ -54,6 +67,15 @@
 
   .home {
     margin-top: 20px;
+  }
+  img:hover {
+    opacity: 1;
+  }
+  #filter:focus {
+    outline: none;
+  }
+  #filter:hover {
+    cursor: pointer;
   }
 }
 
@@ -82,7 +104,7 @@
     border: none;
     text-decoration: none;
     margin: auto;
-    width: 50%;
+    width: 30%;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
@@ -93,7 +115,14 @@
   .home {
     padding-top: 200px;
   }
+
   img:hover {
     opacity: 1;
+  }
+  #filter:focus {
+    outline: none;
+  }
+  #filter:hover {
+    cursor: pointer;
   }
 }

@@ -16,7 +16,7 @@
   }
 
   #description {
-    background-color: #fcfdff;
+    background-color: #e5e5e5;
     text-align: center;
     display: inline-block;
     margin: auto;
@@ -59,7 +59,7 @@
   }
 
   #description {
-    background-color: #fcfdff;
+    background-color: #e5e5e5;
     text-align: center;
     display: inline-block;
     margin: auto;
@@ -103,8 +103,8 @@
   .selected {
     height: 500px;
     width: 500px;
-    margin-bottom: 50px;
-    padding-top: 100px;
+    margin-bottom: 0px;
+    padding-top: 50px;
   }
   .smallpic {
     height: 100px;
@@ -120,7 +120,7 @@
   }
 
   .info {
-    margin: 200px 60px 150px 0px;
+    margin: 175px 60px 150px 0px;
     width: 50%;
   }
   .pictures {
@@ -128,13 +128,15 @@
     width: 50%;
   }
   #description {
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 20px;
     text-align: center;
     background-color: #e5e5e5;
     line-height: 25px;
     padding: 20px 20px 20px 20px;
-    width: 70%;
+    width: 80%;
     align-self: center;
   }
   .inform {
@@ -142,7 +144,8 @@
     flex-direction: column;
     justify-content: center;
     width: 75%;
-    margin-left: 70px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .Ptitle {
     border-bottom: 2px black solid;
@@ -168,5 +171,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 75%;
+    margin: auto;
   }
+  .inform h2 {
+    font-size: 26px;
+  }
+}
+
+.cartBtn:hover {
+  cursor: pointer;
+}
+.cartBtn {
+  font-family: "Cantarell";
 }

@@ -17,6 +17,7 @@
   .landingtopAbout p {
     font-size: 18px !important;
     line-height: 20px !important;
+    margin: auto;
   }
 }
 @media only screen and (max-width: 1024px) and (min-width: 668px) {
@@ -32,6 +33,11 @@
     width: 55%;
     height: 37vh;
   }
+  .landingtopAbout p {
+    font-size: 18px !important;
+    line-height: 24px !important;
+    margin: auto;
+  }
 }
 
 @media only screen and (min-width: 1025px) {
@@ -44,6 +50,7 @@
     border: 2px solid #dddddd;
     padding: 50px;
     background-color: rgba(0, 0, 0);
-    width: 30%;
+    width: 34%;
+    height: 47vh;
   }
 }

@@ -46,7 +46,8 @@ class Home extends Component {
   }
 
   render() {
-    const styles = { customText: { fontSize: 24 } };
+    const styles = { customText: { fontSize: 18 } };
+
     let filterSilo = [];
     if (this.props.sneakers[0] && this.state.filterSilo !== "") {
       filterSilo = this.props.sneakers[0].filter(
@@ -137,7 +138,9 @@ class Home extends Component {
             UNDO
           </MenuItem>
           <br />
-          <p style={styles.customText}>SILHOUETTE</p>
+          <p style={{ textDecoration: "underline", fontSize: "22px" }}>
+            SILHOUETTE
+          </p>
           <MenuItem
             style={styles.customText}
             onClick={() => this.handleSilo("One")}
@@ -188,7 +191,7 @@ class Home extends Component {
           </MenuItem>
           <br />
           <br />
-          <p style={styles.customText}>COLOR</p>
+          <p style={{ textDecoration: "underline", fontSize: "22px" }}>COLOR</p>
           <MenuItem
             style={styles.customText}
             onClick={() => this.handleColor("White")}

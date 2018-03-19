@@ -85,7 +85,7 @@ class Landing extends Component {
                 href={"http://localhost:3001/Login"}
                 className="landLink"
               >
-                LOG IN
+                LOG IN / SIGN UP
               </a>
             </div>
           ) : (

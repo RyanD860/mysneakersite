@@ -11,7 +11,7 @@ class Product extends Component {
     super();
     this.state = {
       selectedImage: "",
-      value: 1
+      value: ""
     };
     this.changeSelectedImg = this.changeSelectedImg.bind(this);
   }
@@ -25,8 +25,6 @@ class Product extends Component {
   }
   handleChange = (event, index, value) => this.setState({ value });
   render() {
-    const styles = { customWidth: { autoWidth: true } };
-
     return (
       <div className="product">
         <div className="pictures">
@@ -112,6 +110,7 @@ class Product extends Component {
         <div className="info">
           <div className="inform">
             <h1 className="Ptitle">{this.props.selectedSneaker.name}</h1>
+            <h2>${this.props.selectedSneaker.price}</h2>
             <p id="description">{this.props.selectedSneaker.description}</p>
           </div>
           {this.props.stock[0] ? (
@@ -119,7 +118,7 @@ class Product extends Component {
               <DropDownMenu
                 value={this.state.value}
                 onChange={this.handleChange}
-                style={styles.customWidth}
+                style={{ width: "30%", margin: "auto" }}
                 autoWidth={false}
                 className="menu"
               >
@@ -138,12 +137,29 @@ class Product extends Component {
           ) : (
             false
           )}
-          <button
-            className="cartBtn"
-            onClick={() => this.props.addToCart(this.state.value)}
-          >
-            ADD TO CART
-          </button>
+          {this.state.value !== "" ? (
+            <button
+              className="cartBtn"
+              onClick={() => this.props.addToCart(this.state.value)}
+            >
+              ADD TO CART
+            </button>
+          ) : (
+            <h2
+              style={{
+                border: "2px #e7e7e7 solid",
+                paddingTop: "10px",
+                paddingBottom: "10px",
+                marginTop: "20px",
+                fontSize: "20px",
+                width: "50%",
+                margin: "auto",
+                fontFamily: "Cantarell"
+              }}
+            >
+              Select a size
+            </h2>
+          )}
         </div>
       </div>
     );

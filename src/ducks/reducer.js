@@ -65,6 +65,37 @@ export function getUser(id) {
   };
 }
 
+//Updates users shipping information
+export function editUser(
+  firstname,
+  lastname,
+  address,
+  city,
+  state,
+  zipcode,
+  email,
+  phone
+) {
+  return {
+    type: "EDIT_USER",
+    payload: axios
+      .put(`/api/editUser/${this.props.match.params.id}`, {
+        firstname: firstname,
+        lastname: lastname,
+        address: address,
+        city: city,
+        state: state,
+        zipcode: zipcode,
+        email: email,
+        phone: phone
+      })
+      .then(response => {
+        return response.data;
+      })
+      .catch(console.log("Couldn't update user info"))
+  };
+}
+
 // Logs out user
 export function logOut() {
   return {

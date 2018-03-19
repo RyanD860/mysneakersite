@@ -138,7 +138,7 @@ app.get("/me", function(req, res, next) {
             })
             .then(
               res.redirect(
-                `http://localhost:3001/#/user/addUser/${req.user.id}`
+                `http://localhost:3000/#/user/addUser/${req.user.id}`
               )
             );
           next();
@@ -149,7 +149,7 @@ app.get("/me", function(req, res, next) {
             total: 0
           };
 
-          res.redirect(`http://localhost:3001/#/`);
+          res.redirect(`http://localhost:3000/#/`);
         }
       });
   }
@@ -202,11 +202,13 @@ app.get("/text/:name/:phone/:address", function(req, res) {
   );
 });
 
+//HOSTING
 const path = require("path");
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
+// SERVER LISTENING
 app.listen(port, () => {
   console.log(`Currently listening on port #${port}`);
 });

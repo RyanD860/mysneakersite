@@ -28,7 +28,6 @@ class AddUser extends Component {
   }
   handleAddressChange(val) {
     this.setState({ address: val });
-    console.log(this.state.address);
   }
   handleCityChange(val) {
     this.setState({ city: val });
@@ -108,7 +107,7 @@ class AddUser extends Component {
           />
           <Divider />
           <TextField
-            hintText="Phone"
+            hintText="Phone (ex: 1xxxxxxxxxx)"
             style={style}
             underlineShow={false}
             onChange={e => this.handlePhoneChange(e.target.value)}
@@ -128,7 +127,7 @@ class AddUser extends Component {
               )
             }
             className="editBtn"
-            style={{ width: "50%" }}
+            style={{ width: "15%", height: "5vh" }}
           >
             ENTER
           </button>

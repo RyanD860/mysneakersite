@@ -9,6 +9,7 @@ import TextField from "material-ui/TextField";
 import axios from "axios";
 import Moment from "react-moment";
 import "./Profile.css";
+import { Link } from "react-router-dom";
 
 class Profile extends Component {
   constructor() {
@@ -36,6 +37,7 @@ class Profile extends Component {
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handlezipcodeChange = this.handlezipcodeChange.bind(this);
     this.editUser = this.editUser.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -48,16 +50,13 @@ class Profile extends Component {
   }
   handleFirstnameChange(val) {
     this.setState({ firstname: val });
-    console.log(this.state.address);
   }
   handleLastNameChange(val) {
     this.setState({ lastname: val });
-    console.log(this.state.address);
   }
 
   handleAddressChange(val) {
     this.setState({ address: val });
-    console.log(this.state.address);
   }
   handleCityChange(val) {
     this.setState({ city: val });
@@ -115,14 +114,28 @@ class Profile extends Component {
 
     this.setState({ editable: false });
   }
-
+  handleClick() {
+    this.editUser(
+      this.state.firstname,
+      this.state.lastname,
+      this.state.address,
+      this.state.city,
+      this.state.state,
+      this.state.zipcode,
+      this.state.email,
+      this.state.phone
+    );
+    window.location.reload();
+  }
   render() {
     const style = { marginLeft: 20 };
 
     return (
       <div id="profile">
         <div id="custinfo">
-          <h2>User Profile</h2>
+          <h2 style={{ fontSize: "26px", textDecoration: "underline" }}>
+            User Profile
+          </h2>
           {this.props.user[0] ? (
             <div id="customer">
               <h1>{this.props.user[0].firstname}</h1>
@@ -131,7 +144,26 @@ class Profile extends Component {
           ) : (
             <h2>No User</h2>
           )}
-
+          {this.props.user[0] && !this.state.editable ? (
+            <div id="userInfo">
+              <h2 style={{ textDecoration: "underline" }}>
+                Shipping Information
+              </h2>
+              <p>
+                {" "}
+                Name: {this.props.user[0].firstname}{" "}
+                {this.props.user[0].lastname}{" "}
+              </p>
+              <p> Address: {this.props.user[0].address} </p>
+              <p> City: {this.props.user[0].city} </p>
+              <p> State: {this.props.user[0].state} </p>
+              <p> Zipcode: {this.props.user[0].zipcode} </p>
+              <p> E-mail: {this.props.user[0].email} </p>
+              <p> Phone: {this.props.user[0].phone} </p>
+            </div>
+          ) : (
+            false
+          )}
           <button onClick={() => this.allowEdits()} className="editBtn">
             {" "}
             EDIT SHIPPING INFORMATION
@@ -204,49 +236,24 @@ class Profile extends Component {
                 />
                 <Divider />
               </Paper>
-
-              <button
-                onClick={() =>
-                  this.editUser(
-                    this.state.firstname,
-                    this.state.lastname,
-                    this.state.address,
-                    this.state.city,
-                    this.state.state,
-                    this.state.zipcode,
-                    this.state.email,
-                    this.state.phone
-                  )
-                }
-                className="editBtn"
-              >
-                ENTER
-              </button>
-            </div>
-          ) : (
-            false
-          )}
-
-          {this.props.user[0] && !this.state.editable ? (
-            <div id="userInfo">
-              <p>
-                {" "}
-                Name: {this.props.user[0].firstname}{" "}
-                {this.props.user[0].lastname}{" "}
-              </p>
-              <p> Address: {this.props.user[0].address} </p>
-              <p> City: {this.props.user[0].city} </p>
-              <p> State: {this.props.user[0].state} </p>
-              <p> Zipcode: {this.props.user[0].zipcode} </p>
-              <p> E-mail: {this.props.user[0].email} </p>
-              <p> Phone: {this.props.user[0].phone} </p>
+              <Link to={`/user/profile/${this.props.match.params.id}`}>
+                <button onClick={() => this.handleClick()} className="editBtn">
+                  ENTER
+                </button>
+              </Link>
             </div>
           ) : (
             false
           )}
         </div>
         <div id="purchases">
-          {this.props.pastPurchases[0] ? <h2>Past Purchases :</h2> : false}
+          {this.props.pastPurchases[0] ? (
+            <h2 style={{ fontSize: "26px", textDecoration: "underline" }}>
+              Past Purchases
+            </h2>
+          ) : (
+            false
+          )}
           {this.props.pastPurchases[0] ? (
             this.props.pastPurchases.map((item, i) => {
               return (
@@ -263,7 +270,15 @@ class Profile extends Component {
               );
             })
           ) : (
-            <h2>You have made no purchases</h2>
+            <h2
+              style={{
+                margin: "auto",
+                paddingLeft: "5px",
+                paddingRight: "5px"
+              }}
+            >
+              You have made no purchases
+            </h2>
           )}
         </div>
       </div>

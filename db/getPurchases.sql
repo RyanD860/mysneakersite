@@ -1,1 +1,1 @@
-SELECT i.mainimage, o.orderid, o.date, p.name FROM images AS i JOIN ordnum AS o ON i.productid = o.productid JOIN product AS p ON o.productid = p.productid  WHERE o.authid = $1 ORDER BY o.date DESC;
+SELECT i.mainimage, o.orderid, o.date, o.orderinst, p.name FROM images AS i JOIN ordnum AS o ON i.productid = o.productid JOIN product AS p ON o.productid = p.productid  WHERE o.authid = $1 ORDER BY o.orderid DESC;

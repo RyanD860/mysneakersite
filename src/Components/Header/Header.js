@@ -40,13 +40,21 @@ class Header extends Component {
           <nav>
             <Link
               to="/home"
-              style={{ textDecoration: "none", borderBottom: "none" }}
+              style={{
+                textDecoration: "none",
+                borderBottom: "none",
+                fontFamily: "Cantarell"
+              }}
             >
               <nav>Sneakers</nav>
             </Link>
             <Link
               to="/cart"
-              style={{ textDecoration: "none", borderBottom: "none" }}
+              style={{
+                textDecoration: "none",
+                borderBottom: "none",
+                fontFamily: "Cantarell"
+              }}
             >
               <nav>
                 {this.props.cart.cart
@@ -58,13 +66,21 @@ class Header extends Component {
             {this.props.user[0] ? (
               <Link
                 to={`/user/profile/${this.props.user[0].authid}`}
-                style={{ textDecoration: "none", borderBottom: "none" }}
+                style={{
+                  textDecoration: "none",
+                  borderBottom: "none",
+                  fontFamily: "Cantarell"
+                }}
               >
                 <nav>Profile</nav>
               </Link>
             ) : (
               <a
-                style={{ textDecoration: "none", borderBottom: "none" }}
+                style={{
+                  textDecoration: "none",
+                  borderBottom: "none",
+                  fontFamily: "Cantarell"
+                }}
                 href={"http://localhost:3001/login"}
               >
                 Log In
@@ -74,7 +90,10 @@ class Header extends Component {
             {this.props.user[0] ? (
               <Link
                 to="/"
-                style={{ textDecoration: "none", borderBottom: "none" }}
+                style={{
+                  textDecoration: "none",
+                  borderBottom: "none"
+                }}
               >
                 <button className="log" onClick={() => this.props.logOut()}>
                   Log Out

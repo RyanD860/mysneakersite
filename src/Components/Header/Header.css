@@ -23,6 +23,11 @@
 
   .log {
     font-size: 20px;
+    border: none;
+    background-color: #e5e5e5;
+  }
+  header {
+    background-color: #e5e5e5;
   }
 }
 
@@ -49,7 +54,12 @@
   }
 
   .log {
-    font-size: 20px;
+    font-size: 22px;
+    border: none;
+    background-color: #e5e5e5;
+  }
+  header {
+    background-color: #e5e5e5;
   }
 }
 
@@ -65,15 +75,17 @@
     width: 100%;
     background-color: #e5e5e5;
     z-index: 2;
+    height: 13vh;
   }
   nav {
     display: flex;
     flex-direction: row;
     margin-right: 50px;
+    align-items: flex-end;
   }
   #logo {
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
     text-align: center;
     margin-left: 10px;
   }
@@ -81,7 +93,7 @@
   nav,
   a {
     color: black;
-    font-size: 22px;
+    font-size: 26px;
   }
 
   a:link {
@@ -94,6 +106,9 @@
   }
 
   .log {
-    font-size: 20px;
+    font-size: 26px;
+    background-color: #e5e5e5;
+    border: none;
+    font-family: "Cantarell";
   }
 }

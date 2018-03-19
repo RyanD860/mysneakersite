@@ -6,12 +6,6 @@ import "./cart.css";
 import Checkout from "./checkout";
 
 class Cart extends Component {
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {}
-
   render() {
     let toNumber = Number(this.props.cart.total).toFixed(2);
     let tax = Number(toNumber * 0.06).toFixed(2);
@@ -42,7 +36,7 @@ class Cart extends Component {
                   <div className="cartinfo">
                     <p className="title">{item[0].name}</p>
                     <p className="subtitle">Size: {item[0].size}</p>
-                    <p className="subtitle">SubTotal: {item[0].price}</p>
+                    <p className="subtitle">SubTotal: ${item[0].price}</p>
                   </div>
                   <button
                     onClick={() => this.props.removeFromCart(i, item[0].price)}
@@ -58,26 +52,25 @@ class Cart extends Component {
           )}
         </div>
         <div id="checkout">
-          <h2>Cart</h2>
+          <h2>CHECKOUT</h2>
           {this.props.cart.total ? (
             <div id="total">
               <p>Cart subtotal: ${toNumber}</p>
               <p>Shipping: FREE </p>
               <p>Tax: ${tax}</p>
-              <p>Cart total: {cartTotal}</p>
+              <p>Cart total: ${cartTotal}</p>
             </div>
           ) : (
-            <h2>Cart total : 0</h2>
+            <h2>Cart total : $0</h2>
           )}
-          {this.props.loggedIn &&
-          this.props.cart.total &&
-          userAddress !== "" ? (
+
+          {this.props.loggedIn && userAddress !== "" ? (
             <div>
               <Checkout
                 name={`${this.props.user[0].firstname} ${
                   this.props.user[0].lastname
                 }`}
-                description={"Sneakers"}
+                description={"Checkout"}
                 amount={cartTotal}
                 customer={this.props.user[0].authid}
                 addtoCart={this.props.checkout}
@@ -87,13 +80,13 @@ class Cart extends Component {
                 id="checkout"
                 phone={this.props.user[0].phone}
                 address={userAddress}
+                email={this.props.user[0].email}
               />
             </div>
           ) : (
-            <p>You must be logged in to Checkout</p>
+            <h2 className="notlog">Log in to Checkout</h2>
           )}
         </div>
-        {console.log(userAddress)}
       </div>
     );
   }

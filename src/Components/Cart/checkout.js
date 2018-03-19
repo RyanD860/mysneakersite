@@ -27,7 +27,8 @@ const onToken = (
       customer: customer
     })
     .then(addtoCart(cart, user, auth))
-    .then(axios.get(`/text/${name}/${phone}/${address}`));
+    .then(axios.get(`/text/${name}/${phone}/${address}`))
+    .then(alert("Thank you for your order"));
 
 const Checkout = ({
   name,
@@ -39,7 +40,8 @@ const Checkout = ({
   user,
   auth,
   phone,
-  address
+  address,
+  email
 }) => (
   <StripeCheckout
     name={name}
@@ -66,6 +68,7 @@ const Checkout = ({
     auth={auth}
     phone={phone}
     address={address}
+    email={email}
   />
 );
 

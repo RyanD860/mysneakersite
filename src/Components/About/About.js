@@ -5,7 +5,7 @@ const About = ({ goBack }) => {
   return (
     <div className="landingtopAbout">
       <h1>About Us</h1>
-      <p style={{ lineHeight: "30px", fontSize: "22px" }}>
+      <p style={{ lineHeight: "30px", fontSize: "20px" }}>
         We at We Sell J's know how important a fresh pair of kicks is. Michael
         Jordan blazed a path for people of all ages to feel "Like Mike" while on
         the court, or even when you're just hanging with a couple of pals. We
