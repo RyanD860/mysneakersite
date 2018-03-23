@@ -16,7 +16,8 @@ const onToken = (
   auth,
   phone,
   name,
-  address
+  address,
+  checked
 ) => token =>
   axios
     .post("/charge", {
@@ -28,7 +29,7 @@ const onToken = (
     })
     .then(addtoCart(cart, user, auth))
     .then(axios.get(`/text/${name}/${phone}/${address}`))
-    .then(alert("Thank you for your order"));
+    .then(checked());
 
 const Checkout = ({
   name,
@@ -41,7 +42,8 @@ const Checkout = ({
   auth,
   phone,
   address,
-  email
+  email,
+  checked
 }) => (
   <StripeCheckout
     name={name}
@@ -57,7 +59,8 @@ const Checkout = ({
       auth,
       phone,
       name,
-      address
+      address,
+      checked
     )}
     currency={CURRENCY}
     stripeKey={"pk_test_SsXYSIBwiqR4e2KFXmaEU69G"}

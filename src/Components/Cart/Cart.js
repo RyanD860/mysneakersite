@@ -4,8 +4,22 @@ import { connect } from "react-redux";
 import { removeFromCart, checkout } from "./../../ducks/reducer";
 import "./cart.css";
 import Checkout from "./checkout";
+import OrderCom from "./OrderCom";
 
 class Cart extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      checkedout: false
+    };
+
+    this.handleCheck = this.handleCheck.bind(this);
+  }
+  handleCheck() {
+    this.setState({ checkedout: !this.state.checkedout });
+  }
+
   render() {
     let toNumber = Number(this.props.cart.total).toFixed(2);
     let tax = Number(toNumber * 0.06).toFixed(2);
@@ -17,6 +31,7 @@ class Cart extends Component {
         this.props.user[0].city
       }, ${this.props.user[0].state}, ${this.props.user[0].zipcode}`;
     }
+
     return (
       <div className="cart">
         <div className="col">
@@ -81,11 +96,13 @@ class Cart extends Component {
                 phone={this.props.user[0].phone}
                 address={userAddress}
                 email={this.props.user[0].email}
+                checked={this.handleCheck}
               />
             </div>
           ) : (
             <h2 className="notlog">Log in to Checkout</h2>
           )}
+          {this.state.checkedout ? <OrderCom /> : false}
         </div>
       </div>
     );

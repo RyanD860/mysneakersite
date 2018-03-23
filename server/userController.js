@@ -14,9 +14,8 @@ module.exports = {
         req.params.id
       ])
       .then(response => {
-        res.status(200).json(response);
+        res.send(response);
       })
-      .then(res.redirect(`http://localhost:300/profile/${req.params.id}`))
       .catch(console.log);
   },
 

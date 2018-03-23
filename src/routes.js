@@ -6,6 +6,7 @@ import AddUser from "./Components/User/AddUser/AddUser";
 import Profile from "./Components/User/Profile/Profile";
 import Cart from "./Components/Cart/Cart";
 import Landing from "./Components/Landing/Landing";
+import OrderCom from "./Components/Cart/OrderCom";
 
 export default (
   <Switch>
@@ -15,5 +16,6 @@ export default (
     <Route path="/user/addUser/:id" component={AddUser} />
     <Route path="/user/profile/:id" component={Profile} />
     <Route path="/cart" component={Cart} />
+    <Route path="/ordercom" component={OrderCom} />
   </Switch>
 );

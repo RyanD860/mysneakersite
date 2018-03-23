@@ -50,7 +50,7 @@ class Landing extends Component {
                       display: "inline",
                       paddingBottom: "5px"
                     }}
-                    href={"http://localhost:3000/home"}
+                    href={"http://167.99.56.218/home"}
                   >
                     SHOP{" "}
                   </p>
@@ -65,7 +65,7 @@ class Landing extends Component {
                     display: "inline",
                     paddingBottom: "11.1px"
                   }}
-                  href={"http://localhost:3000/about"}
+                  href={"http://167.99.56.218/about"}
                   onClick={() => this.handleAbout()}
                   className="landLink"
                 >
@@ -82,7 +82,7 @@ class Landing extends Component {
                   display: "inline",
                   paddingBottom: "5px"
                 }}
-                href={"http://localhost:3001/Login"}
+                href={process.env.REACT_APP_LOGIN}
                 className="landLink"
               >
                 LOG IN / SIGN UP
@@ -122,7 +122,7 @@ class Landing extends Component {
                     display: "inline",
                     paddingBottom: "11.1px"
                   }}
-                  href={"http://localhost:3000/about"}
+                  href={"http://167.99.56.218/about"}
                   onClick={() => this.handleAbout()}
                   className="landLink"
                 >

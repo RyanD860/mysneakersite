@@ -81,7 +81,7 @@ class Header extends Component {
                   borderBottom: "none",
                   fontFamily: "Cantarell"
                 }}
-                href={"http://localhost:3001/login"}
+                href={process.env.REACT_APP_LOGIN}
               >
                 Log In
               </a>
@@ -90,10 +90,7 @@ class Header extends Component {
             {this.props.user[0] ? (
               <Link
                 to="/"
-                style={{
-                  textDecoration: "none",
-                  borderBottom: "none"
-                }}
+                style={{ textDecoration: "none", borderBottom: "none" }}
               >
                 <button className="log" onClick={() => this.props.logOut()}>
                   Log Out
