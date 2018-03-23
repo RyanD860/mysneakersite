@@ -82,7 +82,7 @@ class Landing extends Component {
                   display: "inline",
                   paddingBottom: "5px"
                 }}
-                href={process.env.REACT_APP_LOGIN}
+                href={"http://167.99.56.218:3001/login"}
                 className="landLink"
               >
                 LOG IN / SIGN UP
