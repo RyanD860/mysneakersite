@@ -133,7 +133,9 @@ app.get("/me", function(req, res, next) {
               req.session.user = { user: req.user.id, cart: [], total: 0 };
             })
             .then(
-              res.redirect(`http://167.99.56.218/#/user/addUser/${req.user.id}`)
+              res.redirect(
+                `http://167.99.56.218:3001/#/user/addUser/${req.user.id}`
+              )
             );
           next();
         } else {
@@ -143,7 +145,7 @@ app.get("/me", function(req, res, next) {
             total: 0
           };
 
-          res.redirect(`http://167.99.56.218/#/`);
+          res.redirect(`http://167.99.56.218:3001/#/`);
         }
       });
   }
