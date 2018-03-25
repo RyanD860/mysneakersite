@@ -1,0 +1,47 @@
+@media only screen and (max-width: 667px) {
+  #footer {
+    width: 100%;
+    height: 47vh;
+    background-color: #e5e5e5;
+  }
+  .footerin {
+    margin-top: 20px;
+    padding: 20px 10px 0px 10px;
+  }
+  #github {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 668px) {
+  #footer {
+    width: 100%;
+    height: 42vh;
+    background-color: #e5e5e5;
+  }
+  .footerin {
+    margin-top: 20px;
+    padding: 20px 10px 0px 10px;
+  }
+  #github {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  #footer {
+    width: 100%;
+    height: 9;
+    background-color: #e5e5e5;
+  }
+  .footerin {
+    margin-top: 20px;
+    padding: 20px 10px 0px 10px;
+  }
+  #github {
+    height: 75px;
+    width: 75px;
+  }
+}
